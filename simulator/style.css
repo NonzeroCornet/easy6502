@@ -9,8 +9,7 @@
   margin: 8px 0;
 }
 
-.start,
-.length {
+.start, .length {
   width: 50px;
 }
 
@@ -30,18 +29,6 @@
   font-family: monospace;
   overflow: auto;
   float: left;
-}
-
-.highlightedCode {
-  margin: 0 0 6px 0;
-  padding: 6px;
-  border: 1px solid black;
-  width: 420px;
-  height: 290px;
-  font-family: monospace;
-  overflow: auto;
-  float: left;
-  white-space: pre-wrap; /* Preserve whitespace formatting */
 }
 
 .screen {
