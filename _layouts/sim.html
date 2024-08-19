@@ -659,52 +659,52 @@
         <script>
           function highlightSyntax(code) {
             const instructionColors = {
-              LD: "lime",
-              ST: "teal",
+              LD: "#32CD32",
+              ST: "#00CED1",
               T: "purple",
-              PH: "lightgrey",
-              PL: "lightgrey",
+              PH: "#D3D3D3",
+              PL: "#D3D3D3",
               AND: "blue",
               EOR: "blue",
               ORA: "blue",
               BIT: "blue",
-              ADC: "orange",
-              SBC: "orange",
-              CMP: "orange",
-              CP: "orange",
-              INC: "yellow",
-              DEC: "yellow",
-              IN: "yellow",
-              DE: "yellow",
-              ASL: "pink",
-              LSR: "pink",
-              ROL: "pink",
-              ROR: "pink",
+              ADC: "#FF8C00",
+              SBC: "#FF8C00",
+              CMP: "#FF8C00",
+              CP: "#FF8C00",
+              INC: "#FFD700",
+              DEC: "#FFD700",
+              IN: "#FFD700",
+              DE: "#FFD700",
+              ASL: "#FF69B4",
+              LSR: "#FF69B4",
+              ROL: "#FF69B4",
+              ROR: "#FF69B4",
               JMP: "green",
               JSR: "green",
               RTS: "green",
+              BRK: "#6A5ACD",
+              NOP: "#6A5ACD",
+              RTI: "#6A5ACD",
               B: "green",
-              CL: "brown",
-              SE: "brown",
-              BRK: "darkgrey",
-              NOP: "darkgrey",
-              RTI: "darkgrey",
+              CL: "#A0522D",
+              SE: "#A0522D",
             };
 
             function colorize(token) {
               const upperToken = token.toUpperCase();
 
               if (upperToken.endsWith(":")) {
-                return `<span style="color: grey; font-style: italic;">${token}</span>`;
+                return `<span style="color: grey; font-style: italic; font-weight: bold;">${token}</span>`;
               }
 
               if (upperToken.startsWith("#$")) {
-                return `<span style="color: pink; font-style: italic;">${token}</span>`;
+                return `<span style="color: #FF69B4; font-style: italic;">${token}</span>`;
               }
 
               if (upperToken.startsWith("$")) {
                 const parts = upperToken.split(",");
-                const address = `<span style="color: teal; font-style: italic;">${parts[0]}</span>`;
+                const address = `<span style="color: #ff0080; font-style: italic;">${parts[0]}</span>`;
                 const register = parts[1]
                   ? `<span style="color: red;">,${parts[1]}</span>`
                   : "";
@@ -724,19 +724,22 @@
                 }
               }
 
-              return `<span style="color: grey; font-style: italic;">${token}</span>`;
+              return `<span style="color: grey; font-style: italic; font-weight: bold;">${token}</span>`;
             }
 
-            return code
-              .split(/(\s+)/)
-              .map((token) => {
-                if (/^\s+$/.test(token)) {
-                  return token.replace(/\n/g, "<br>");
-                }
-                return colorize(token);
-              })
-              .join("");
+            return (
+              code
+                .split(/(\s+)/)
+                .map((token) => {
+                  if (/^\s+$/.test(token)) {
+                    return token.replace(/\n/g, "<br>");
+                  }
+                  return colorize(token);
+                })
+                .join("") + "&nbsp;"
+            );
           }
+
           document.addEventListener("DOMContentLoaded", () => {
             const codeTextarea = document.querySelector(".code");
             const highlightedCode = document.querySelector(
