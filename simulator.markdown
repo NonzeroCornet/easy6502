@@ -1,10 +1,6 @@
 ---
-layout: basic
+layout: sim
 ---
-
-<h2>Simulator</h2>
-
-To use the disassembler, click **Assemble**, then **Disassemble**. [Back to Easy 6502](index.html).
 
 {% include start.html %}
 start:
